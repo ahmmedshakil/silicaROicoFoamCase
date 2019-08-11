@@ -2,15 +2,15 @@
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
 |  \\    /   O peration     | Version:  v1906                                 |
-|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volVectorField;
-    object      U;
+    class       pointVectorField;
+    object      pointDisplacement;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -20,30 +20,30 @@ internalField   uniform (0 0 0);
 
 boundaryField
 {
-
-    inlet
+	floor
     {
         type            fixedValue;
-        value uniform (0.5 0 0); 
-    }
-
-    outlet
-    {
-        type            zeroGradient;
-    }
-
-    floor
-    {
-        type            fixedValue;
-        value uniform (0 0 0);
-    }
-
-   membrane
-    {
-        type            movingWallVelocity;
         value           uniform (0 0 0);
     }
-
+    
+    membrane
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+    
+    inlet
+    {
+        type            fixedNormalSlip;
+        n               (-1 0 0);
+    }
+    
+    outlet
+    {
+        type            fixedNormalSlip;
+        n               (1 0 0);
+    }
+    
     frontAndBackPlanes
     {
         type            empty;

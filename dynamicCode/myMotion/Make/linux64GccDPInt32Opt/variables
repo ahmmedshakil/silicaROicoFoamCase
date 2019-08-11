@@ -1,1 +1,0 @@
-LIB = $(PWD)/../platforms/$(WM_OPTIONS)/lib/libmyMotion_62067f7b10fa0125d94f9830a47fbec5f6ffbf8f

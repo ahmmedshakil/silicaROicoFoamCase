@@ -18,68 +18,22 @@ FoamFile
 
 dynamicFvMesh   dynamicMotionSolverFvMesh;
 
-motionSolver    coded;
-name            myMotion;
+motionSolverLibs ( "libfvMotionSolvers.so" );
 
-codeInclude
-#{
-    #include "transformField.H"
-    #include <cstdlib>
-    int rand();
-#};
+/*
+solver          velocityLaplacian;
+velocityLaplacianCoeffs
+{
+    diffusivity     directional ( 0 100 0 );
+	//diffusivity  uniform;
+}
+*/
 
-localCode
-#{
-    // Generate new set of points
-    tmp<pointField> twistColumn
-    (
-        const scalar& maxRotAngle,
-        const pointField& points
-    )
-    {
-        tmp<pointField> tnewPoints(new pointField(points));
-        pointField& newPoints = tnewPoints.ref();
-
-        const boundBox bb(points, true);
-        const scalar zMin = bb.min()[vector::Z];
-        const scalar zSpan = bb.span()[vector::Z];
-
-        const volScalarField& p = db().lookupObject<volVectorField>("p");
-
-        forAll(points, pointI)
-        {
-            const scalar x = points[pointI].component(0);
-            const scalar y = points[pointI].component(1);
-            const scalar z = points[pointI].component(2);
-            const scalar U = points[pointI].U();
-
-            // Scale the angle by height
-            const scalar silicaDeposit = 0.001*(rand()%10);
-            const scalar zr = z + silicaDeposit;
-            if (z > 0.3)
-            {
-            newPoints[pointI] = vector(x, y, zr);
-            }
-            else
-            {
-            newPoints[pointI] = vector(x, y, z);
-            }
-        }
-        return tnewPoints;
-    }
-#};
-
-code
-#{
-    const Time& tm = mesh().time();
-    const pointField& p0 = points0();
-
-    // Max twist pi at t=10
-    const scalar maxRotAngle =
-        constant::mathematical::pi*Foam::sin(degToRad(90.0/10.0*tm.value()));
-
-    return twistColumn(maxRotAngle, p0);
-#};
+solver          displacementLaplacian;
+displacementLaplacianCoeffs
+{
+    diffusivity     quadratic inversePointDistance (membrane);
+}
 
 
 // ************************************************************************* //

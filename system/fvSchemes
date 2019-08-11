@@ -29,11 +29,17 @@ divSchemes
 {
     default         none;
     div(phi,U)      Gauss linear;
+
+    //additional for silicaEquations
+    div(phi,C) Gauss linear;
 }
 
 laplacianSchemes
 {
     default         Gauss linear corrected;
+
+    //additional for silicaEquations
+    laplacian(D,C) Gauss linear corrected;
 }
 
 interpolationSchemes
