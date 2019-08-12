@@ -24,7 +24,8 @@ boundaryField
     inlet
     {
         type            fixedValue;
-        value uniform (0.5 0 0); 
+        value uniform (0.5 0 0);
+        //type            zeroGradient;
     }
 
     outlet
@@ -42,6 +43,13 @@ boundaryField
     {
         type            movingWallVelocity;
         value           uniform (0 0 0);
+        //type              noSlip;
+    }
+
+    bottom
+    {
+        type            fixedValue;
+        value uniform (0 0 0);
     }
 
     frontAndBackPlanes

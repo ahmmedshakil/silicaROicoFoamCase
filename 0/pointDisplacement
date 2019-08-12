@@ -31,17 +31,27 @@ boundaryField
         type            fixedValue;
         value           uniform (0 0 0);
     }
+
+    bottom
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
     
     inlet
     {
         type            fixedNormalSlip;
-        n               (-1 0 0);
+        n               (1 0 0);
+        //type            fixedValue;
+        //value           uniform (0 0 0);
     }
     
     outlet
     {
         type            fixedNormalSlip;
         n               (1 0 0);
+        //type            fixedValue;
+        //value           uniform (0 0 0);
     }
     
     frontAndBackPlanes

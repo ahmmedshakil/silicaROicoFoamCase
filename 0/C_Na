@@ -42,6 +42,11 @@ boundaryField
         value           uniform 120;
     }
 
+    bottom
+    {
+        type        zeroGradient;
+    }
+
     frontAndBackPlanes
     {
         type            empty;
