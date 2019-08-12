@@ -1,0 +1,107 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1906                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solvers
+{
+    p
+    {
+        solver          PBiCGStab;
+        preconditioner  DIC;
+        tolerance       1e-06;
+        relTol          0;
+    }
+    
+    pFinal
+    {
+        $p;
+        relTol          0;
+    }
+    U
+    {
+        solver          PBiCGStab;
+        preconditioner  DILU;
+        tolerance       1e-05;
+        relTol          0;
+    }
+
+    "cellDisplacement.*"
+    {
+        solver          GAMG;
+        tolerance       1e-08;
+        relTol          0;
+        smoother        GaussSeidel;
+    }
+
+    "(cellMotionU|cellMotionUz)"
+    {
+        $p;
+        tolerance       1e-08;
+        relTol          0;
+    }
+
+    C_Sitot
+    {
+        solver          PBiCGStab;
+        preconditioner  DILU;
+        tolerance       1e-5;
+        relTol          0.1;
+    }
+
+    C_SiO2
+    {
+        solver          PBiCGStab;
+        preconditioner  DILU;
+        tolerance       1e-5;
+        relTol          0.1;
+    }
+
+    C_H2O
+    {
+        solver          PBiCGStab;
+        preconditioner  DILU;
+        tolerance       1e-5;
+        relTol          0.1;
+    }
+
+    C_Cl
+    {
+        solver          PBiCGStab;
+        preconditioner  DILU;
+        tolerance       1e-5;
+        relTol          0.1;
+    }
+
+    C_Na
+    {
+        solver          PBiCGStab;
+        preconditioner  DILU;
+        tolerance       1e-5;
+        relTol          0.1;
+    }
+}
+
+PIMPLE
+{}
+
+PISO
+{
+    nCorrectors     2;
+    nNonOrthogonalCorrectors 2;
+}
+
+
+// ************************************************************************* //
