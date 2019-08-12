@@ -2,5 +2,7 @@
 !0/
 !constant/
 !system/
+!Allclean
+!Allrun
 !README.md
 !.gitignore
