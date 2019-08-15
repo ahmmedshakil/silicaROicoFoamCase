@@ -14,6 +14,16 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+libs
+(
+    "liblduSolvers.so"
+    "libgroovyBC.so"
+    "libsimpleFunctionObjects.so"
+    "libsimpleSwakFunctionObjects.so"
+    "libswakFunctionObjects.so"
+    "libgroovyStandardBCs.so"
+);
+
 application     silicaROicoFoam;
 
 startFrom       startTime;
@@ -22,7 +32,7 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         5;
+endTime         0.5;
 
 deltaT          1e-4;
 

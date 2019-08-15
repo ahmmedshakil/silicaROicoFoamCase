@@ -38,8 +38,14 @@ boundaryField
 
    membrane
     {
-        type            fixedValue;
-        value           uniform 96;
+        //type            fixedGradient;
+        //gradient        uniform -7;
+        //type            fixedValue;
+        //value           uniform 96;
+        type            groovyBC;
+        valueExpression "C*(vw*deltay/D + 1)"; //"C*D/(D-vw*deltay)";
+        value           $internalField;
+        variables       "C=internalField(C_Cl);vw=mag(U&normal());D=2.03e-9;deltay=mag(delta());";
     }
 
     bottom

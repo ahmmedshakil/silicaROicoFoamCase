@@ -22,41 +22,38 @@ FoamFile
     {
         type            patch;
         nFaces          30;
-        startFace       7050;
+        startFace       8230;
     }
     outlet
     {
         type            patch;
         nFaces          30;
-        startFace       7080;
+        startFace       8260;
     }
     floor
     {
-        type            wall;
-        inGroups        1(wall);
-        nFaces          120;
-        startFace       7110;
+        type            patch;
+        nFaces          140;
+        startFace       8290;
     }
     membrane
     {
-        type            wall;
-        inGroups        1(wall);
+        type            patch;
         nFaces          100;
-        startFace       7230;
+        startFace       8430;
     }
     bottom
     {
-        type            wall;
-        inGroups        1(wall);
-        nFaces          20;
-        startFace       7330;
+        type            patch;
+        nFaces          40;
+        startFace       8530;
     }
     defaultFaces
     {
         type            empty;
         inGroups        1(empty);
-        nFaces          7200;
-        startFace       7350;
+        nFaces          8400;
+        startFace       8570;
     }
 )
 

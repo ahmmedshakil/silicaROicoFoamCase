@@ -16,7 +16,7 @@ FoamFile
 
 dimensions      [0 2 -2 0 0 0 0];
 
-internalField   uniform 0;
+internalField   uniform 400000*1.1;
 
 boundaryField
 {
@@ -32,7 +32,7 @@ boundaryField
         //p0              uniform 0;
         //value           uniform 0;
         type            fixedValue;
-        value           uniform 0;
+        value           uniform 400000; //based on typical operating pressure for RO of 60 psi
     }
 
     floor
