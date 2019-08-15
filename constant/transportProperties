@@ -32,7 +32,7 @@ D_Na           D_Na [0 2 -1 0 0 0 0] 1.33e-9; //https://www.ukessays.com/essays/
 ka              ka [0 -3 0 0 1 0 0] 1.5848e-7; // = 10**-9.8 * 1000;
 kw              kw [0 -6 0 0 2 0 0] 1e-8; //=10**-14 * 1000**2;
 
-C_sat           C_sat [0 -3 0 0 1 0 0] 2.5;
+C_sat           C_sat [0 -3 0 0 1 0 0] 1;//2.5;
 
 concDimensions  concDimensions [0 -3 0 0 1 0 0] 1; //give solution to C_H correct dimensions
 timeDimension   timeDimension [0 0 -1 0 0 0 0] 1;

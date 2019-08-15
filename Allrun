@@ -1,4 +1,3 @@
-blockMesh >log.blockMesh &
-checkMesh >log.checkMesh &
-silicaROicoFoam >log.silicaROicoFoam &
+blockMesh >log.blockMesh && checkMesh >log.checkMesh &&
+silicaROicoFoam >log.silicaROicoFoam
 

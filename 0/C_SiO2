@@ -10,7 +10,7 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
-    object      C_Sitot;
+    object      C_SiO2;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -38,8 +38,10 @@ boundaryField
 
    membrane
     {
-        type            fixedValue;
-        value           uniform 5;
+        type            groovyBC;
+        valueExpression "C*(vw*deltay/D + 1)"; //"C*D/(D-vw*deltay)";
+        value           $internalField;
+        variables       "C=internalField(C_SiO2);vw=mag(U&normal());D=D_SiO2;deltay=mag(delta());";
     }
 
     bottom

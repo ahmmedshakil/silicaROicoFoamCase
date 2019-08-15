@@ -45,7 +45,7 @@ boundaryField
         type            groovyBC;
         valueExpression "C*(vw*deltay/D + 1)"; //"C*D/(D-vw*deltay)";
         value           $internalField;
-        variables       "C=internalField(C_Cl);vw=mag(U&normal());D=2.03e-9;deltay=mag(delta());";
+        variables       "C=internalField(C_Cl);vw=mag(U&normal());D=D_Cl;deltay=mag(delta());";
     }
 
     bottom
