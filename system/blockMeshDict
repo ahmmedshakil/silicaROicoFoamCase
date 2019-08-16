@@ -26,26 +26,26 @@ vertices
     (0 0 0)
     (5 0 0)
 
-    (-1 1 0.1)
-    (0 1 0.1)
-    (5 1 0.1)
-    (-1 0 0.1)
-    (0 0 0.1)
-    (5 0 0.1)
+    (-1 1 1)
+    (0 1 1)
+    (5 1 1)
+    (-1 0 1)
+    (0 0 1)
+    (5 0 1)
 
     //outlet conditioning
     (6 1 0)
     (6 0 0)
-    (6 1 0.1)
-    (6 0 0.1)
+    (6 1 1)
+    (6 0 1)
     
 );
 
 blocks
 (
-    hex (3 4 1 0 9 10 7 6) (20 30 1) simpleGrading (1 10 1) //inlet box
-    hex (4 5 2 1 10 11 8 7) (100 30 1) simpleGrading (1 10 1) //membrane box
-    hex (5 13 12 2 11 15 14 8) (20 30 1) simpleGrading (1 10 1) //outlet box
+    hex (3 4 1 0 9 10 7 6) (20 30 30) simpleGrading (1 10 1) //inlet box
+    hex (4 5 2 1 10 11 8 7) (100 30 30) simpleGrading (1 10 1) //membrane box
+    hex (5 13 12 2 11 15 14 8) (20 30 30) simpleGrading (1 10 1) //outlet box
 );
 
 edges
@@ -99,6 +99,28 @@ boundary
         (
             (3 4 10 9)
             (5 13 15 11)            
+        );
+    }
+
+    frontSide
+    {
+        type patch;
+        faces
+        (
+            (0 1 4 3)
+            (1 2 5 4)
+            (2 12 13 5)
+        );
+    }
+
+    backSide
+    {
+        type patch;
+        faces
+        (
+            (6 7 10 9)
+            (7 8 11 10)
+            (8 14 15 11)
         );
     }
 );

@@ -62,10 +62,20 @@ boundaryField
         value uniform (0 0 0);
     }
 
-    frontAndBackPlanes
+    frontSide
     {
-        type            empty;
+        type zeroGradient;
     }
+
+    backSide
+    {
+        type zeroGradient;
+    }
+
+    //frontAndBackPlanes
+    //{
+    //    type            empty;
+    //}
 }
 
 // ************************************************************************* //

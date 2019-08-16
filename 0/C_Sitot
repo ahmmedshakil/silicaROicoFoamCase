@@ -49,10 +49,20 @@ boundaryField
         type        zeroGradient;
     }
 
-    frontAndBackPlanes
+    frontSide
     {
-        type            empty;
+        type zeroGradient;
     }
+
+    backSide
+    {
+        type zeroGradient;
+    }
+
+    //frontAndBackPlanes
+    //{
+    //    type            empty;
+    //}
 }
 
 // ************************************************************************* //
