@@ -32,7 +32,7 @@ velocityLaplacianCoeffs
 solver          displacementLaplacian;
 displacementLaplacianCoeffs
 {
-    diffusivity     quadratic inversePointDistance (membrane);
+    diffusivity     quadratic inversePointDistance (floor);
 }
 
 
