@@ -43,9 +43,9 @@ boundaryField
         //type            fixedValue;
         //value           uniform 96;
         type            groovyBC;
-        valueExpression "C*(vw*deltay/D + 1)"; //"C*D/(D-vw*deltay)";
+        valueExpression "Cwall"; //"Cwall>C ? Cwall : C"; //"C*D/(D-vw*deltay)";
         value           $internalField;
-        variables       "C=internalField(C_Cl);vw=mag(U&normal());D=D_Cl;deltay=mag(delta());";
+        variables       "C=internalField(C_Cl);vw=mag(U&normal());D=D_Cl;deltay=mag(delta());Cwall=C*(vw*deltay/D + 1);";
     }
 
     bottom

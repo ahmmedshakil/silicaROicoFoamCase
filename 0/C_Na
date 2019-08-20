@@ -39,9 +39,9 @@ boundaryField
    membrane
     {
         type            groovyBC;
-        valueExpression "C*(vw*deltay/D + 1)"; //"C*D/(D-vw*deltay)";
+        valueExpression "Cwall"; //"C*D/(D-vw*deltay)";
         value           $internalField;
-        variables       "C=internalField(C_Na);vw=mag(U&normal());D=D_Na;deltay=mag(delta());";
+        variables       "C=internalField(C_Na);vw=mag(U&normal());D=D_Na;deltay=mag(delta());Cwall=C*(vw*deltay/D + 1);";
     }
 
     bottom

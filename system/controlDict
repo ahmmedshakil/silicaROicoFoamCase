@@ -58,9 +58,16 @@ adjustTimeStep    yes;
 
 maxCo             0.8;//0.5;
 
-foulingTimeFactor   100000; // time scale multiple for the movement of the mesh ie foulingTimeFactor=10 then 1 simulation second is 10 seconds.
+foulingTimeFactor   10000;//100000; // time scale multiple for the movement of the mesh ie foulingTimeFactor=10 then 1 simulation second is 10 seconds.
 
 caseDimensions  3; // value (2 or 3, indicating if 2D or 3D geometry)
 
+seedProbabilityFactor   5; // 1 in seedProbabilityFactor chance of growth in first 24 hours (initiation).
+
+curvatureFactor     -0.999999; // value y component of point normal vector must be greater than for seed to already exist
+
+growthThreshold     7.5e-8;
+
+surfaceRoughness    1e-5;
 
 // ************************************************************************* //

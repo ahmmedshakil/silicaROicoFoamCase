@@ -21,44 +21,44 @@ FoamFile
     inlet
     {
         type            patch;
-        nFaces          900;
-        startFace       368700;
+        nFaces          200;
+        startFace       68200;
     }
     outlet
     {
         type            patch;
-        nFaces          900;
-        startFace       369600;
+        nFaces          200;
+        startFace       68400;
     }
     floor
     {
         type            patch;
-        nFaces          4200;
-        startFace       370500;
+        nFaces          1200;
+        startFace       68600;
     }
     membrane
     {
         type            patch;
-        nFaces          3000;
-        startFace       374700;
+        nFaces          1000;
+        startFace       69800;
     }
     bottom
     {
         type            patch;
-        nFaces          1200;
-        startFace       377700;
+        nFaces          200;
+        startFace       70800;
     }
     frontSide
     {
         type            patch;
-        nFaces          4200;
-        startFace       378900;
+        nFaces          2400;
+        startFace       71000;
     }
     backSide
     {
         type            patch;
-        nFaces          4200;
-        startFace       383100;
+        nFaces          2400;
+        startFace       73400;
     }
 )
 
