@@ -16,7 +16,8 @@ FoamFile
 
 dimensions      [0 -3 0 0 1 0 0];
 
-internalField   uniform 100;
+initConc        100;
+internalField   uniform $initConc;
 
 boundaryField
 {
@@ -39,7 +40,7 @@ boundaryField
    membrane
     {
         type            groovyBC;
-        valueExpression "Cwall"; //"C*D/(D-vw*deltay)";
+        valueExpression "time()<0.1 ? $initConc : Cwall"; //"C*D/(D-vw*deltay)";
         value           $internalField;
         variables       "C=internalField(C_Na);vw=mag(U&normal());D=D_Na;deltay=mag(delta());Cwall=C*(vw*deltay/D + 1);";
     }

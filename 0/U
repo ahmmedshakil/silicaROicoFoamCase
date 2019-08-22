@@ -49,9 +49,9 @@ boundaryField
 
         type            groovyBC;
         //valueExpression "vector(0, -p/10000000, 0)";
-        valueExpression "vector(0, -vtm, 0)";
+        valueExpression "vector(0, vy, 0)";
         value           uniform (0 0 0);
-        variables       "osmotic_coefficient=0.4;Lp=3.9e-11;Ptm=(p-100000*p/p);C_salt=(C_Na + C_Cl + C_Sitot + C_SiO2);vtm=Lp*(Ptm-osmotic_coefficient*C_salt);";
+        variables       "osmotic_coefficient=0.4;Lp=3.9e-11;Ptm=(p-100000*p/p);C_salt=(C_Na + C_Cl + C_Sitot + C_SiO2);vtm=Lp*(Ptm-osmotic_coefficient*C_salt);vy=(time()<0.1 ? 0 : -vtm);";
     }
 
     bottom

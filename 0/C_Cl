@@ -16,7 +16,8 @@ FoamFile
 
 dimensions      [0 -3 0 0 1 0 0];
 
-internalField   uniform 80;
+initConc        80;
+internalField   uniform $initConc;
 
 boundaryField
 {
@@ -43,7 +44,7 @@ boundaryField
         //type            fixedValue;
         //value           uniform 96;
         type            groovyBC;
-        valueExpression "Cwall"; //"Cwall>C ? Cwall : C"; //"C*D/(D-vw*deltay)";
+        valueExpression "time()<0.1 ? $initConc : Cwall"; //"Cwall>C ? Cwall : C"; //"C*D/(D-vw*deltay)";
         value           $internalField;
         variables       "C=internalField(C_Cl);vw=mag(U&normal());D=D_Cl;deltay=mag(delta());Cwall=C*(vw*deltay/D + 1);";
     }
