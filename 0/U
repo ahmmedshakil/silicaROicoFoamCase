@@ -58,7 +58,7 @@ boundaryField
     {
         //type            movingWallVelocity;
         //value uniform (0 0 0);
-        type            movingWallVelocity;
+        type            fixedValue;
         value uniform (0 0 0);
     }
 

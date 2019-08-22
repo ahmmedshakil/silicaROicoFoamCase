@@ -8,58 +8,64 @@
 FoamFile
 {
     version     2.0;
-    format      binary;
-    class       polyBoundaryMesh;
-    arch        "LSB;label=32;scalar=64";
-    location    "constant/polyMesh";
-    object      boundary;
+    format      ascii;
+    class       volScalarField;
+    object      r_precip;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-7
-(
+dimensions      [0 -2 -1 0 1 0 0];
+
+internalField   uniform 0;
+
+boundaryField
+{
     inlet
     {
-        type            patch;
-        nFaces          600;
-        startFace       86900;
+        type            fixedValue;
+        value           uniform (0 0 0);
     }
+
     outlet
     {
-        type            patch;
-        nFaces          600;
-        startFace       87500;
+        type            fixedValue;
+        value           uniform (0 0 0);
     }
+
     floor
     {
-        type            patch;
-        nFaces          1500;
-        startFace       88100;
+        type            fixedValue;
+        value           uniform (0 0 0);
     }
-    membrane
+
+   membrane
     {
-        type            patch;
-        nFaces          900;
-        startFace       89600;
+        type            fixedValue;
+        value           uniform (0 0 0);
     }
+
     bottom
     {
-        type            patch;
-        nFaces          600;
-        startFace       90500;
+        type            fixedValue;
+        value           uniform (0 0 0);
     }
+
     frontSide
     {
-        type            patch;
-        nFaces          1000;
-        startFace       91100;
+        type            fixedValue;
+        value           uniform (0 0 0);
     }
+
     backSide
     {
-        type            patch;
-        nFaces          1000;
-        startFace       92100;
+        type            fixedValue;
+        value           uniform (0 0 0);
     }
-)
+
+    //frontAndBackPlanes
+    //{
+    //    type            empty;
+    //}
+}
 
 // ************************************************************************* //

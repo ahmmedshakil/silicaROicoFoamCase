@@ -38,7 +38,7 @@ deltaT          1e-4;
 
 writeControl    timeStep;
 
-writeInterval   100;
+writeInterval   10;
 
 purgeWrite      0;
 
@@ -60,7 +60,7 @@ maxCo             0.8;//0.5;
 
 initialisationTime  0.1; // time before silica and RO physics are not operating (allow fields to initialise)
 
-foulingTimeFactor   1000;//100000; // time scale multiple for the movement of the mesh ie foulingTimeFactor=10 then 1 simulation second is 10 seconds.
+foulingTimeFactor   1e7;//100000; // time scale multiple for the movement of the mesh ie foulingTimeFactor=10 then 1 simulation second is 10 seconds.
 
 caseDimensions  3; // value (2 or 3, indicating if 2D or 3D geometry)
 
