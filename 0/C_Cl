@@ -24,7 +24,7 @@ boundaryField
     inlet
     {
         type            fixedValue;
-        value           uniform 80;
+        value           uniform $initConc;
     }
 
     outlet

@@ -15,10 +15,8 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-//- The total number of domains (mandatory)
-numberOfSubdomains  3;
+numberOfSubdomains  8;
 
-//- The decomposition method (mandatory)
 method          scotch;
 
 // ************************************************************************* //

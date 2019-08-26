@@ -23,43 +23,43 @@ boundaryField
     inlet
     {
         type            fixedValue;
-        value           uniform (0 0 0);
+        value           uniform 0;
     }
 
     outlet
     {
         type            fixedValue;
-        value           uniform (0 0 0);
+        value           uniform 0;
     }
 
     floor
     {
         type            fixedValue;
-        value           uniform (0 0 0);
+        value           uniform 0;
     }
 
    membrane
     {
         type            fixedValue;
-        value           uniform (0 0 0);
+        value           uniform 0;
     }
 
     bottom
     {
         type            fixedValue;
-        value           uniform (0 0 0);
+        value           uniform 0;
     }
 
     frontSide
     {
         type            fixedValue;
-        value           uniform (0 0 0);
+        value           uniform 0;
     }
 
     backSide
     {
         type            fixedValue;
-        value           uniform (0 0 0);
+        value           uniform 0;
     }
 
     //frontAndBackPlanes

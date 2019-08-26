@@ -16,7 +16,6 @@ FoamFile
 
 libs
 (
-    "liblduSolvers.so"
     "libgroovyBC.so"
     "libsimpleFunctionObjects.so"
     "libsimpleSwakFunctionObjects.so"
@@ -26,19 +25,19 @@ libs
 
 application     silicaROicoFoam;
 
-startFrom       latestTime;//startTime;
+startFrom       startTime; //latestTime;//startTime;
 
 startTime       0;
 
-stopAt          endTime;
+stopAt          endTime;//endTime;
 
-endTime         10;
+endTime         3;
 
 deltaT          1e-4;
 
 writeControl    timeStep;
 
-writeInterval   10;
+writeInterval   100;
 
 purgeWrite      0;
 
@@ -60,7 +59,7 @@ maxCo             0.8;//0.5;
 
 initialisationTime  0.1; // time before silica and RO physics are not operating (allow fields to initialise)
 
-foulingTimeFactor   1e7;//100000; // time scale multiple for the movement of the mesh ie foulingTimeFactor=10 then 1 simulation second is 10 seconds.
+foulingTimeFactor   1e5;//100000; // time scale multiple for the movement of the mesh ie foulingTimeFactor=10 then 1 simulation second is 10 seconds.
 
 caseDimensions  3; // value (2 or 3, indicating if 2D or 3D geometry)
 
@@ -78,5 +77,26 @@ seedY       0.0000001;
 growthThreshold     7.5e-8;
 
 surfaceRoughness    1e-5;
+
+
+functions
+{
+    patchMassFlow
+    {
+        type patchExpression;
+        accumulations (
+            sum
+        );
+        patches (
+            inlet
+            outlet
+            membrane
+        );
+        expression "phi";
+        verbose true;
+        ignore_unimplemented_simpleFunctionObject::movePoints true;
+    }
+};
+
 
 // ************************************************************************* //
