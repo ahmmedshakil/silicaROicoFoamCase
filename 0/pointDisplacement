@@ -42,18 +42,18 @@ boundaryField
     
     inlet
     {
-        type            fixedNormalSlip;
-        n               (-1 0 0);
-        //type            fixedValue;
-        //value           uniform (0 0 0);
+        //type            fixedNormalSlip;
+        //n               (-1 0 0);
+        type            fixedValue;
+        value           uniform (0 0 0);
     }
     
     outlet
     {
-        type            fixedNormalSlip;
-        n               (1 0 0);
-        //type            fixedValue;
-        //value           uniform (0 0 0);
+        //type            fixedNormalSlip;
+        //n               (1 0 0);
+        type            fixedValue;
+        value           uniform (0 0 0);
     }
     
     frontSide
