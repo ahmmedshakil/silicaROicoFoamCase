@@ -16,7 +16,7 @@ FoamFile
 
 dimensions      [0 -3 0 0 1 0 0];
 
-initConc        0.5;
+initConc        0.01;
 internalField   uniform $initConc;
 
 boundaryField
@@ -24,7 +24,7 @@ boundaryField
     inlet
     {
         type            fixedValue;
-        value           uniform 0.5;
+        value           uniform 0.01;
     }
 
     outlet

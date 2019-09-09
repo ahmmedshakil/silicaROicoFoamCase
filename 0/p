@@ -16,7 +16,10 @@ FoamFile
 
 dimensions      [0 2 -2 0 0 0 0];
 
-internalField   uniform 400000*1.1;
+initP           400000;
+finalP          1700000;
+
+internalField   uniform $finalP;
 
 boundaryField
 {
@@ -31,8 +34,9 @@ boundaryField
         //rho             none;
         //p0              uniform 0;
         //value           uniform 0;
-        type            fixedValue;
-        value           uniform 400000; //based on typical operating pressure for RO of 60 psi
+        type            groovyBC;
+        valueExpression  "time()<0.1 ? ($finalP - $initP)*time()/0.1 + $initP : $finalP";
+        value           uniform $finalP;
     }
 
     floor
