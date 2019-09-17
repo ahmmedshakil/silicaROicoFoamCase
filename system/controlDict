@@ -31,7 +31,7 @@ startTime       0;
 
 stopAt          endTime;//endTime;
 
-endTime         10;
+endTime         15;
 
 deltaT          1e-4;
 
@@ -72,7 +72,7 @@ seedXmin    0.00072;
 seedXmax    0.00078;
 seedZmin    0.00047;
 seedZmax    0.00052;
-seedY       1e-8;
+seedY       1e-6;//1e-8;
 
 growthThreshold     1e-20;
 
