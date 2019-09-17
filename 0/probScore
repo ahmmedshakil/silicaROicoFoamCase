@@ -1,0 +1,73 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1906                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      probScore;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 0 0 0 0];
+
+internalField   uniform 0;
+
+boundaryField
+{
+    inlet
+    {
+        type            fixedValue;
+        value           uniform 0;
+    }
+
+    outlet
+    {
+        type            fixedValue;
+        value           uniform 0;
+    }
+
+    floor
+    {
+        type            fixedValue;
+        value           uniform 0;
+    }
+
+   membrane
+    {
+        type            groovyBC;
+        valueExpression "prob";
+        value           0;
+        variables       "prob=rand();";
+    }
+
+    bottom
+    {
+        type            fixedValue;
+        value           uniform 0;
+    }
+
+    frontSide
+    {
+        type            fixedValue;
+        value           uniform 0;
+    }
+
+    backSide
+    {
+        type            fixedValue;
+        value           uniform 0;
+    }
+
+    //frontAndBackPlanes
+    //{
+    //    type            empty;
+    //}
+}
+
+// ************************************************************************* //

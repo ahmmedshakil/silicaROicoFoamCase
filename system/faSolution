@@ -19,8 +19,8 @@ solvers
 {
     X_SiO2_M
     {
-        solver          PBiCG;
-        preconditioner  DILU;
+        solver          PBiCGStab;//PBiCG;
+        preconditioner  DIC;
         minIter         0;
         maxIter         2000;
         tolerance       1e-06;

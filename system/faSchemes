@@ -35,7 +35,7 @@ divSchemes
 laplacianSchemes
 {
     default             none;
-    //laplacian(Ds,Cs)    Gauss linear corrected;
+    laplacian(D_X,X_SiO2_M)    Gauss linear corrected;
 }
 
 interpolationSchemes
