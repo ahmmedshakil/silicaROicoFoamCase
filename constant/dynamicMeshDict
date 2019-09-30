@@ -17,23 +17,34 @@ FoamFile
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 dynamicFvMesh   dynamicMotionSolverFvMesh;
+twoDMotion      no; //set to 'yes' when 2D case
 
 motionSolverLibs ( "libfvMotionSolvers.so" );
 
 /*
-solver          velocityLaplacian;
-velocityLaplacianCoeffs
+solver          displacementLaplacian;
+
+displacementLaplacianCoeffs
 {
-    diffusivity     directional ( 0 100 0 );
-	//diffusivity  uniform;
+    diffusivity     quadratic inverseDistance (top); //quadratic inversePointDistance (membrane);
 }
 */
 
-solver          displacementLaplacian;
-displacementLaplacianCoeffs
+
+solver displacementLaplacian;
+
+diffusivity uniform 1.0;
+
+distancePatches 1 (membrane);
+
+frozenDiffusion yes;
+
+pseudoSolid
 {
-    diffusivity     quadratic inversePointDistance (membrane);
-}
+    poissonsRatio           0.5;
+    nCorrectors             3;
+    convergenceTolerance    1e-9;
+};
 
 
 // ************************************************************************* //

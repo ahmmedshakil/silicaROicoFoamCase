@@ -14,21 +14,30 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+libs
+(
+    "libgroovyBC.so"
+    "libsimpleFunctionObjects.so"
+    "libsimpleSwakFunctionObjects.so"
+    "libswakFunctionObjects.so"
+    "libgroovyStandardBCs.so"
+);
+
 application     silicaROicoFoam;
 
-startFrom       startTime;
+startFrom       startTime; //latestTime;//startTime;
 
 startTime       0;
 
-stopAt          endTime;
+stopAt          endTime;//endTime;
 
-endTime         5;
+endTime         6048000;
 
 deltaT          1e-4;
 
 writeControl    timeStep;
 
-writeInterval   100;
+writeInterval   1;
 
 purgeWrite      0;
 
@@ -46,7 +55,47 @@ runTimeModifiable true;
 
 adjustTimeStep    yes;
 
-maxCo             0.8;//0.5;
+maxCo             0.5;//0.5;
 
+initialisationTime  0.1; // time before silica and RO physics are not operating (allow fields to initialise)
+
+foulingTimeFactor   5e6;//100000; // time scale multiple for the movement of the mesh ie foulingTimeFactor=10 then 1 simulation second is 10 seconds.
+
+caseDimensions  3; // value (2 or 3, indicating if 2D or 3D geometry)
+
+seedProbabilityFactor   5; // 1 in seedProbabilityFactor chance of growth in first 24 hours (initiation).
+
+curvatureFactor     0.9; // value y component of point normal vector must be greater than for seed to already exist
+
+seedType    1; //0=roughness, 1=crystal
+seedXmin    0.00072;
+seedXmax    0.00078;
+seedZmin    0.00047;
+seedZmax    0.00052;
+seedY       1e-6;//1e-8;
+
+growthThreshold     1e-20;
+
+surfaceRoughness    1e-5;
+
+
+//functions
+//{
+//    patchMassFlow
+//    {
+//        type patchExpression;
+//        accumulations (
+//            sum
+//        );
+//        patches (
+//            inlet
+//            outlet
+//            membrane
+//        );
+//        expression "phi";
+//        verbose true;
+//        ignore_unimplemented_simpleFunctionObject::movePoints true;
+//    }
+//};
 
 // ************************************************************************* //

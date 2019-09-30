@@ -19,70 +19,150 @@ scale   0.001;
 
 vertices
 (
-    (-10 1 0)
+    //large domain
+    /*
+    (-0.5 1 0)
     (0 1 0)
-    (5 1 0)
-    (-10 0 0)
+    (15 1 0)
+    (-0.5 0 0)
     (0 0 0)
-    (5 0 0)
+    (15 0 0)
 
-    (-10 1 0.1)
-    (0 1 0.1)
-    (5 1 0.1)
-    (-10 0 0.1)
-    (0 0 0.1)
-    (5 0 0.1)
+    (-0.5 1 2)
+    (0 1 2)
+    (15 1 2)
+    (-0.5 0 2)
+    (0 0 2)
+    (15 0 2)
 
     //outlet conditioning
-    (15 1 0)
-    (15 0 0)
-    (15 1 0.1)
-    (15 0 0.1)
+    (20 1 0)
+    (20 0 0)
+    (20 1 2)
+    (20 0 2)
+    */
+
+    //small domain
+    (-0.5 1 0)
+    (0 1 0)
+    (1.5 1 0)
+    (-0.5 0 0)
+    (0 0 0)
+    (1.5 0 0)
+
+    (-0.5 1 1)
+    (0 1 1)
+    (1.5 1 1)
+    (-0.5 0 1)
+    (0 0 1)
+    (1.5 0 1)
+
+    //outlet conditioning
+    (2 1 0)
+    (2 0 0)
+    (2 1 1)
+    (2 0 1)
+
     
 );
 
+
 blocks
 (
-    hex (3 4 1 0 9 10 7 6) (10 30 1) simpleGrading (0.05 10 1) //inlet box
-    hex (4 5 2 1 10 11 8 7) (100 30 1) simpleGrading (1 10 1) //membrane box
-    hex (5 13 12 2 11 15 14 8) (10 30 1) simpleGrading (20 10 1) //outlet box
+//    hex (3 4 1 0 9 10 7 6) (20 30 10) simpleGrading (1 5 1) //inlet box
+//    hex (4 5 2 1 10 11 8 7) (400 30 10) simpleGrading (1 5 1) //membrane box
+//    hex (5 13 12 2 11 15 14 8) (20 30 10) simpleGrading (1 5 1) //outlet box
+
+//    hex (3 4 1 0 9 10 7 6) (10 30 25) simpleGrading (1 5 1) //inlet box
+
+    //large domain
+    /*
+    hex (4 5 2 1 10 11 8 7) (450 30 60) simpleGrading (1 5 1) //membrane box
+    hex (5 13 12 2 11 15 14 8) (150 30 60) simpleGrading (1 5 1) //outlet box
+    */
+
+    //small domain
+    hex (4 5 2 1 10 11 8 7) (45 30 25) simpleGrading (1 5 1) //membrane box
+    hex (5 13 12 2 11 15 14 8) (15 30 25) simpleGrading (1 5 1) //outlet box
 );
 
 edges
 (
 );
 
-patches
+boundary
 (
-    patch inlet
+    inlet
+    {
+        type patch;
+        faces
         (
-            (3 0 6 9)
-        )
+            //(3 0 6 9)
+            (4 1 7 10)
+        );
+    }
 
-    patch outlet
+    outlet
+    {
+        type patch;
+        faces
         (
-            (13 12 14 15)
-        )
-
-    wall floor
+            (13 12 14 15)            
+        );
+    }
+    
+    top
+    {
+        type patch;
+        faces
         (
-            (0 1 7 6)
+            //(0 1 7 6)
             (1 2 8 7)
-            (2 12 14 8)
-        )
+            (2 12 14 8)            
+        );
+    }
 
-    wall membrane
+    membrane
+    {
+        type patch;
+        faces
         (
             (4 5 11 10)
-        )
+            (5 13 15 11)       
+        );
+    }
     
-    wall bottom
-        (
-            (3 4 10 9)
-            (5 13 15 11)
-        )
+    //bottom
+    //{
+    //    type patch;
+    //    faces
+    //    (
+    //        (3 4 10 9)      
+    //    );
+    //}
 
-);
+    frontside
+    {
+        type patch;
+        faces
+        (
+            //(0 1 4 3)
+            (1 2 5 4)
+            (2 12 13 5)
+        );
+    }
+
+    backside
+    {
+        type patch;
+        faces
+        (
+            //(6 7 10 9)
+            (7 8 11 10)
+            (8 14 15 11)
+        );
+    }
+);   
 
 mergePatchPairs
 (

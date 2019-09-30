@@ -10,20 +10,21 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
-    object      C_Sitot;
+    object      C_SiO2;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 dimensions      [0 -3 0 0 1 0 0];
 
-internalField   uniform 0.5;
+initConc        0.01;
+internalField   uniform $initConc;
 
 boundaryField
 {
     inlet
     {
         type            fixedValue;
-        value           uniform 0.5;
+        value           uniform 0.01;
     }
 
     outlet
@@ -31,15 +32,18 @@ boundaryField
         type            zeroGradient;
     }
 
-    floor
+    top
     {
         type            zeroGradient;
     }
 
    membrane
     {
-        type            fixedValue;
-        value           uniform 5;
+        type            zeroGradient;
+        //type            groovyBC;
+        //valueExpression "time()<0.1 ? $initConc : Cwall"; //"C*D/(D-vw*deltay)";
+        //value           $internalField;
+        //variables       "C=internalField(C_SiO2);vw=mag(U&normal());D=D_SiO2;deltay=mag(delta());Cwall=C*(vw*deltay/D + 1);";
     }
 
     bottom
@@ -47,10 +51,26 @@ boundaryField
         type        zeroGradient;
     }
 
-    frontAndBackPlanes
+    frontside
     {
-        type            empty;
+        type zeroGradient;
     }
+
+    backside
+    {
+        type zeroGradient;
+    }
+
+    spacer
+    {
+        type zeroGradient;
+    }
+
+
+    //frontAndBackPlanes
+    //{
+    //    type            empty;
+    //}
 }
 
 // ************************************************************************* //

@@ -16,7 +16,7 @@ FoamFile
 
 dimensions      [0 1 -1 0 0 0 0];
 
-internalField   uniform (0 0 0);
+internalField   uniform (0.1 0 0);
 
 boundaryField
 {
@@ -24,8 +24,12 @@ boundaryField
     inlet
     {
         type            fixedValue;
-        value uniform (0.5 0 0);
+        value           uniform (0.1 0 0);
         //type            zeroGradient;
+        //type    groovyBC;
+        //valueExpression "vector(vx, 0, 0)";
+        //value           uniform (0.06 0 0);
+        //variables       "h=0.00078;umax=0.4;vx=umax*(1-pow(2*(pos().y-h/2)/h, 2));";
     }
 
     outlet
@@ -33,29 +37,62 @@ boundaryField
         type            zeroGradient;
     }
 
-    floor
+    top
     {
         type            fixedValue;
         value uniform (0 0 0);
+        //type            noSlip;
     }
 
    membrane
     {
-        type            movingWallVelocity;
-        value           uniform (0 0 0);
+        //type            movingWallVelocity;
+        //value           uniform (0 -0.000014 0);
         //type              noSlip;
+        //type            movingWallVelocity;
+        //value           uniform (0 -0.000014 0);
+
+        type            groovyBC;
+        //valueExpression "vector(0, -p/10000000, 0)";
+        valueExpression "vector(0, vy, 0)";
+        value           uniform (0 0 0);
+        variables       "osmotic_coefficient=0.4;Lp=3.9e-11;Ptm=(p-100000*p/p);C_salt=(C_Na + C_Cl + C_Sitot + C_SiO2);vtm=Lp*(Ptm-osmotic_coefficient*C_salt)*(1-X_SiO2_M_vf);vy=(time()<0.1 ? -vtm*time()/0.1 : -vtm);";
     }
 
     bottom
     {
+        //type            movingWallVelocity;
+        //value uniform (0 0 0);
+        type            fixedValue;
+        value uniform (0 0 0);
+        //type            noSlip;
+    }
+
+    frontside
+    {
+        //type            slip;
         type            fixedValue;
         value uniform (0 0 0);
     }
 
-    frontAndBackPlanes
+    backside
     {
-        type            empty;
+        //type            slip;
+        type            fixedValue;
+        value uniform (0 0 0);
     }
+
+    spacer
+    {
+        //type            noSlip;
+        type            fixedValue;
+        value uniform (0 0 0);
+    }
+
+    //frontAndBackPlanes
+    //{
+    //    type            empty;
+    //}
 }
 
 // ************************************************************************* //

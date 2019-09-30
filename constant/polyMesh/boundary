@@ -16,47 +16,49 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-6
+7
 (
-    inlet
+    spacer
     {
         type            patch;
-        nFaces          30;
-        startFace       7050;
+        nFaces          66602;
+        startFace       3172902;
+    }
+    membrane
+    {
+        type            patch;
+        nFaces          301168;
+        startFace       3239504;
+    }
+    frontside
+    {
+        type            patch;
+        nFaces          2746;
+        startFace       3540672;
     }
     outlet
     {
         type            patch;
-        nFaces          30;
-        startFace       7080;
+        nFaces          1778;
+        startFace       3543418;
     }
-    floor
+    backside
     {
-        type            wall;
-        inGroups        1(wall);
-        nFaces          120;
-        startFace       7110;
+        type            patch;
+        nFaces          2692;
+        startFace       3545196;
     }
-    membrane
+    inlet
     {
-        type            wall;
-        inGroups        1(wall);
-        nFaces          100;
-        startFace       7230;
+        type            patch;
+        nFaces          1782;
+        startFace       3547888;
     }
-    bottom
+    top
     {
-        type            wall;
-        inGroups        1(wall);
-        nFaces          20;
-        startFace       7330;
-    }
-    defaultFaces
-    {
-        type            empty;
-        inGroups        1(empty);
-        nFaces          7200;
-        startFace       7350;
+        type            patch;
+        nFaces          12724;
+        startFace       3549670;
     }
 )
 

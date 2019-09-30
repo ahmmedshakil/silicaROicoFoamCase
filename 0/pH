@@ -31,7 +31,7 @@ boundaryField
         type            zeroGradient;
     }
 
-    floor
+    top
     {
         type            zeroGradient;
     }
@@ -46,10 +46,26 @@ boundaryField
         type        zeroGradient;
     }
 
-    frontAndBackPlanes
+    frontside
     {
-        type            empty;
+        type zeroGradient;
     }
+
+    backside
+    {
+        type zeroGradient;
+    }
+
+    spacer
+    {
+        type zeroGradient;
+    }
+
+
+    //frontAndBackPlanes
+    //{
+    //    type            empty;
+    //}
 }
 
 // ************************************************************************* //

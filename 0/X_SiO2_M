@@ -1,0 +1,52 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1906                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       areaScalarField;
+    object      X_SiO2_M;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 0 0 0 0];
+
+initConc        0;
+internalField   uniform $initConc;
+
+referenceLevel  0;
+
+boundaryField
+{
+    inlet
+    {
+        type            zeroGradient;
+    }
+    outlet
+    {
+        type            zeroGradient;
+    }
+    frontside
+    {
+        type            zeroGradient;
+    }
+    backside
+    {
+        type            zeroGradient;
+    }
+    spacer
+    {
+        type            zeroGradient;
+    }
+    //frontAndBackPlanes
+    //{
+    //    type            empty;
+    //}
+}
+
+// ************************************************************************* //

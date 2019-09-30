@@ -16,14 +16,15 @@ FoamFile
 
 dimensions      [0 -3 0 0 1 0 0];
 
-internalField   uniform 80;
+initConc        80;//99.95;
+internalField   uniform $initConc;
 
 boundaryField
 {
     inlet
     {
         type            fixedValue;
-        value           uniform 80;
+        value           uniform $initConc;
     }
 
     outlet
@@ -31,15 +32,22 @@ boundaryField
         type            zeroGradient;
     }
 
-    floor
+    top
     {
         type            zeroGradient;
     }
 
    membrane
     {
-        type            fixedValue;
-        value           uniform 96;
+        //type            fixedGradient;
+        //gradient        uniform -7;
+        //type            fixedValue;
+        //value           uniform 96;
+        //type            groovyBC;
+        //valueExpression "time()<0.1 ? $initConc : Cwall"; //"Cwall>C ? Cwall : C"; //"C*D/(D-vw*deltay)";
+        //value           $internalField;
+        //variables       "C=internalField(C_Cl);vw=mag(U&normal());D=D_Cl;deltay=mag(delta());Cwall=C*(vw*deltay/D + 1);";
+        type        zeroGradient;
     }
 
     bottom
@@ -47,10 +55,26 @@ boundaryField
         type        zeroGradient;
     }
 
-    frontAndBackPlanes
+    frontside
     {
-        type            empty;
+        type zeroGradient;
     }
+
+    backside
+    {
+        type zeroGradient;
+    }
+
+    spacer
+    {
+        type zeroGradient;
+    }
+
+
+    //frontAndBackPlanes
+    //{
+    //    type            empty;
+    //}
 }
 
 // ************************************************************************* //

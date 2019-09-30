@@ -20,7 +20,7 @@ internalField   uniform (0 0 0);
 
 boundaryField
 {
-	floor
+	top
     {
         type            fixedValue;
         value           uniform (0 0 0);
@@ -36,6 +36,8 @@ boundaryField
     {
         type            zeroGradient;
         //value           uniform (0 0 0);
+        //type            fixedNormalSlip;
+        //n               (1 0 0);
     }
     
     inlet
@@ -49,15 +51,36 @@ boundaryField
     outlet
     {
         type            fixedNormalSlip;
-        n               (1 0 0);
+        n               (-1 0 0);
         //type            fixedValue;
         //value           uniform (0 0 0);
     }
     
-    frontAndBackPlanes
+    frontside
     {
-        type            empty;
+        //type zeroGradient;
+        type            fixedNormalSlip;
+        n               (0 0 1);
     }
+
+    backside
+    {
+        //type zeroGradient;
+        type            fixedNormalSlip;
+        n               (0 0 1);
+    }
+
+    spacer
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+
+
+    //frontAndBackPlanes
+    //{
+    //    type            empty;
+    //}
 }
 
 // ************************************************************************* //
