@@ -21,7 +21,7 @@ solvers
     {
         solver          PBiCGStab;
         preconditioner  DIC;
-        tolerance       1e-06;
+        tolerance       1e-04;
         relTol          0;
     }
     
@@ -35,7 +35,7 @@ solvers
     {
         solver          PBiCGStab;
         preconditioner  DILU;
-        tolerance       1e-05;
+        tolerance       1e-04;
         relTol          0;
     }
 
@@ -101,7 +101,7 @@ PIMPLE
 PISO
 {
     nCorrectors     2;
-    nNonOrthogonalCorrectors 3;
+    nNonOrthogonalCorrectors 2;
 }
 
 

@@ -19,7 +19,7 @@ dimensions      [0 2 -2 0 0 0 0];
 initP           400000;
 finalP          1700000;
 
-internalField   uniform $finalP * 1.1;
+internalField   uniform $finalP;
 
 boundaryField
 {
@@ -30,11 +30,11 @@ boundaryField
 
     outlet
     {
-        type            fixedValue;
-        value           $finalP;
-        //type            totalPressure;
-        //rho             none;
-        //p0              uniform $finalP;
+        //type            fixedValue;
+        //value           $finalP;
+        type            totalPressure;
+        rho             none;
+        p0              uniform $finalP;
         //value           uniform $finalP;
         //type            groovyBC;
         //valueExpression  "time()<0.1 ? ($finalP - $initP)*time()/0.1 + $initP : $finalP";

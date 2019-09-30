@@ -33,7 +33,7 @@ stopAt          endTime;//endTime;
 
 endTime         6048000;
 
-deltaT          1e-4;
+deltaT          6e-6;
 
 writeControl    timeStep;
 
@@ -55,7 +55,7 @@ runTimeModifiable true;
 
 adjustTimeStep    yes;
 
-maxCo             0.5;//0.5;
+maxCo             0.85;//0.5;
 
 initialisationTime  0.1; // time before silica and RO physics are not operating (allow fields to initialise)
 
