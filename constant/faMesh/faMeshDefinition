@@ -30,17 +30,23 @@ boundary
         ownerPolyPatch membrane;
         neighbourPolyPatch outlet;
     }
-    frontSide
+    frontside
     {
-        type symmetry;
+        type patch;
         ownerPolyPatch membrane;
-        neighbourPolyPatch frontSide;
+        neighbourPolyPatch frontside;
     }
-    backSide
+    backside
     {
-        type symmetry;
+        type patch;
         ownerPolyPatch membrane;
-        neighbourPolyPatch backSide;
+        neighbourPolyPatch backside;
+    }
+    spacer
+    {
+        type patch;
+        ownerPolyPatch membrane;
+        neighbourPolyPatch spacer;
     }
 }
 

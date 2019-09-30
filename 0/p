@@ -19,7 +19,7 @@ dimensions      [0 2 -2 0 0 0 0];
 initP           400000;
 finalP          1700000;
 
-internalField   uniform $finalP;
+internalField   uniform $finalP * 1.1;
 
 boundaryField
 {
@@ -30,16 +30,18 @@ boundaryField
 
     outlet
     {
+        type            fixedValue;
+        value           $finalP;
         //type            totalPressure;
         //rho             none;
-        //p0              uniform 0;
-        //value           uniform 0;
-        type            groovyBC;
-        valueExpression  "time()<0.1 ? ($finalP - $initP)*time()/0.1 + $initP : $finalP";
-        value           uniform $finalP;
+        //p0              uniform $finalP;
+        //value           uniform $finalP;
+        //type            groovyBC;
+        //valueExpression  "time()<0.1 ? ($finalP - $initP)*time()/0.1 + $initP : $finalP";
+        //value           uniform $finalP;
     }
 
-    floor
+    top
     {
         type            zeroGradient;
     }
@@ -54,15 +56,21 @@ boundaryField
         type        zeroGradient;
     }
 
-    frontSide
+    frontside
     {
         type zeroGradient;
     }
 
-    backSide
+    backside
     {
         type zeroGradient;
     }
+
+    spacer
+    {
+        type zeroGradient;
+    }
+
 
     //frontAndBackPlanes
     //{

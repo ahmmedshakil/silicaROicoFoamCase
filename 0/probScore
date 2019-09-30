@@ -32,7 +32,7 @@ boundaryField
         value           uniform 0;
     }
 
-    floor
+    top
     {
         type            fixedValue;
         value           uniform 0;
@@ -52,13 +52,17 @@ boundaryField
         value           uniform 0;
     }
 
-    frontSide
+    frontside
     {
-        type            fixedValue;
-        value           uniform 0;
+        type            zeroGradient;
     }
 
-    backSide
+    backside
+    {
+        type            zeroGradient;
+    }
+
+    spacer
     {
         type            fixedValue;
         value           uniform 0;

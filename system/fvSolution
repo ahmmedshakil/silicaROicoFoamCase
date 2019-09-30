@@ -30,6 +30,7 @@ solvers
         $p;
         relTol          0;
     }
+    
     U
     {
         solver          PBiCGStab;
@@ -100,7 +101,7 @@ PIMPLE
 PISO
 {
     nCorrectors     2;
-    nNonOrthogonalCorrectors 2;
+    nNonOrthogonalCorrectors 3;
 }
 
 

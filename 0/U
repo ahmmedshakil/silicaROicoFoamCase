@@ -16,20 +16,20 @@ FoamFile
 
 dimensions      [0 1 -1 0 0 0 0];
 
-internalField   uniform (0 0 0);
+internalField   uniform (0.1 0 0);
 
 boundaryField
 {
 
     inlet
     {
-        //type            fixedValue;
-        //value uniform (0.06 0 0);
+        type            fixedValue;
+        value           uniform (0.1 0 0);
         //type            zeroGradient;
-        type    groovyBC;
-        valueExpression "vector(vx, 0, 0)";
-        value           uniform (0.06 0 0);
-        variables       "h=0.001;umax=0.4;vx=umax*(1-pow(2*(pos().y-h/2)/h, 2));";
+        //type    groovyBC;
+        //valueExpression "vector(vx, 0, 0)";
+        //value           uniform (0.06 0 0);
+        //variables       "h=0.00078;umax=0.4;vx=umax*(1-pow(2*(pos().y-h/2)/h, 2));";
     }
 
     outlet
@@ -37,11 +37,11 @@ boundaryField
         type            zeroGradient;
     }
 
-    floor
+    top
     {
-        //type            fixedValue;
-        //value uniform (0 0 0);
-        type            noSlip;
+        type            fixedValue;
+        value uniform (0 0 0);
+        //type            noSlip;
     }
 
    membrane
@@ -63,19 +63,30 @@ boundaryField
     {
         //type            movingWallVelocity;
         //value uniform (0 0 0);
-        //type            fixedValue;
-        //value uniform (0 0 0);
-        type            noSlip;
+        type            fixedValue;
+        value uniform (0 0 0);
+        //type            noSlip;
     }
 
-    frontSide
+    frontside
     {
-        type slip;
+        //type            slip;
+        type            fixedValue;
+        value uniform (0 0 0);
     }
 
-    backSide
+    backside
     {
-        type slip;
+        //type            slip;
+        type            fixedValue;
+        value uniform (0 0 0);
+    }
+
+    spacer
+    {
+        //type            noSlip;
+        type            fixedValue;
+        value uniform (0 0 0);
     }
 
     //frontAndBackPlanes

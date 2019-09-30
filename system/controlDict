@@ -25,19 +25,19 @@ libs
 
 application     silicaROicoFoam;
 
-startFrom       latestTime; //latestTime;//startTime;
+startFrom       startTime; //latestTime;//startTime;
 
 startTime       0;
 
 stopAt          endTime;//endTime;
 
-endTime         0.2;
+endTime         6048000;
 
 deltaT          1e-4;
 
 writeControl    timeStep;
 
-writeInterval   100;
+writeInterval   1;
 
 purgeWrite      0;
 
@@ -55,7 +55,7 @@ runTimeModifiable true;
 
 adjustTimeStep    yes;
 
-maxCo             0.85;//0.5;
+maxCo             0.5;//0.5;
 
 initialisationTime  0.1; // time before silica and RO physics are not operating (allow fields to initialise)
 

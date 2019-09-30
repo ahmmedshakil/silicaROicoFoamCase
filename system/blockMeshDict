@@ -19,6 +19,30 @@ scale   0.001;
 
 vertices
 (
+    //large domain
+    /*
+    (-0.5 1 0)
+    (0 1 0)
+    (15 1 0)
+    (-0.5 0 0)
+    (0 0 0)
+    (15 0 0)
+
+    (-0.5 1 2)
+    (0 1 2)
+    (15 1 2)
+    (-0.5 0 2)
+    (0 0 2)
+    (15 0 2)
+
+    //outlet conditioning
+    (20 1 0)
+    (20 0 0)
+    (20 1 2)
+    (20 0 2)
+    */
+
+    //small domain
     (-0.5 1 0)
     (0 1 0)
     (1.5 1 0)
@@ -38,6 +62,7 @@ vertices
     (2 0 0)
     (2 1 1)
     (2 0 1)
+
     
 );
 
@@ -49,6 +74,14 @@ blocks
 //    hex (5 13 12 2 11 15 14 8) (20 30 10) simpleGrading (1 5 1) //outlet box
 
 //    hex (3 4 1 0 9 10 7 6) (10 30 25) simpleGrading (1 5 1) //inlet box
+
+    //large domain
+    /*
+    hex (4 5 2 1 10 11 8 7) (450 30 60) simpleGrading (1 5 1) //membrane box
+    hex (5 13 12 2 11 15 14 8) (150 30 60) simpleGrading (1 5 1) //outlet box
+    */
+
+    //small domain
     hex (4 5 2 1 10 11 8 7) (45 30 25) simpleGrading (1 5 1) //membrane box
     hex (5 13 12 2 11 15 14 8) (15 30 25) simpleGrading (1 5 1) //outlet box
 );
@@ -78,7 +111,7 @@ boundary
         );
     }
     
-    floor
+    top
     {
         type patch;
         faces
@@ -108,7 +141,7 @@ boundary
     //    );
     //}
 
-    frontSide
+    frontside
     {
         type patch;
         faces
@@ -119,7 +152,7 @@ boundary
         );
     }
 
-    backSide
+    backside
     {
         type patch;
         faces

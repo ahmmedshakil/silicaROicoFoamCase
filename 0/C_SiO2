@@ -32,17 +32,18 @@ boundaryField
         type            zeroGradient;
     }
 
-    floor
+    top
     {
         type            zeroGradient;
     }
 
    membrane
     {
-        type            groovyBC;
-        valueExpression "time()<0.1 ? $initConc : Cwall"; //"C*D/(D-vw*deltay)";
-        value           $internalField;
-        variables       "C=internalField(C_SiO2);vw=mag(U&normal());D=D_SiO2;deltay=mag(delta());Cwall=C*(vw*deltay/D + 1);";
+        type            zeroGradient;
+        //type            groovyBC;
+        //valueExpression "time()<0.1 ? $initConc : Cwall"; //"C*D/(D-vw*deltay)";
+        //value           $internalField;
+        //variables       "C=internalField(C_SiO2);vw=mag(U&normal());D=D_SiO2;deltay=mag(delta());Cwall=C*(vw*deltay/D + 1);";
     }
 
     bottom
@@ -50,15 +51,21 @@ boundaryField
         type        zeroGradient;
     }
 
-    frontSide
+    frontside
     {
         type zeroGradient;
     }
 
-    backSide
+    backside
     {
         type zeroGradient;
     }
+
+    spacer
+    {
+        type zeroGradient;
+    }
+
 
     //frontAndBackPlanes
     //{
