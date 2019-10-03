@@ -16,14 +16,14 @@ FoamFile
 
 dimensions      [0 0 0 0 0 0 0];
 
-internalField   uniform 8.1;
+internalField   uniform 9.4;
 
 boundaryField
 {
     inlet
     {
         type            fixedValue;
-        value           uniform 8.1;
+        value           uniform 9.4;
     }
 
     outlet
@@ -48,12 +48,12 @@ boundaryField
 
     frontside
     {
-        type zeroGradient;
+        type cyclicAMI;//zeroGradient;
     }
 
     backside
     {
-        type zeroGradient;
+        type cyclicAMI;//zeroGradient;
     }
 
     spacer

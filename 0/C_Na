@@ -8,36 +8,26 @@
 FoamFile
 {
     version     2.0;
-    format      ascii;
+    format      binary;
     class       volScalarField;
+    arch        "LSB;label=32;scalar=64";
+    location    "0";
     object      C_Na;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 dimensions      [0 -3 0 0 1 0 0];
 
-initConc        100;
+initConc 100;
 internalField   uniform $initConc;
 
 boundaryField
 {
-    inlet
-    {
-        type            fixedValue;
-        value           uniform $initConc;
-    }
-
-    outlet
+    spacer
     {
         type            zeroGradient;
     }
-
-    top
-    {
-        type            zeroGradient;
-    }
-
-   membrane
+    membrane
     {
         type            zeroGradient;
         //type            groovyBC;
@@ -45,32 +35,28 @@ boundaryField
         //value           $internalField;
         //variables       "C=internalField(C_Na);vw=mag(U&normal());D=D_Na;deltay=mag(delta());Cwall=C*(vw*deltay/D + 1);";
     }
-
-    bottom
-    {
-        type        zeroGradient;
-    }
-
     frontside
     {
-        type zeroGradient;
+        type            cyclicAMI;//zeroGradient;
     }
-
+    outlet
+    {
+        type            zeroGradient;
+    }
     backside
     {
-        type zeroGradient;
+        type            cyclicAMI;//zeroGradient;
     }
-
-    spacer
+    inlet
     {
-        type zeroGradient;
+        type            fixedValue;
+        value           uniform $initConc;
     }
-
-
-    //frontAndBackPlanes
-    //{
-    //    type            empty;
-    //}
+    top
+    {
+        type            zeroGradient;
+    }
 }
+
 
 // ************************************************************************* //

@@ -17,29 +17,30 @@ FoamFile
 
 ddtSchemes
 {
-    default         Euler;
+    default         CrankNicolson 0;
 }
 
 gradSchemes
 {
-    default         Gauss linear;
+    default         cellLimited Gauss linear 1;
+    grad(U)         cellLimited Gauss linear 1;
 }
 
 divSchemes
 {
     default         none;
-    div(phi,U)      Gauss linear;
+    div(phi,U)      Gauss linearUpwindV grad(U);
 
     //additional for silicaEquations
-    div(phi,C) Gauss linear;
+    div(phi,C)      Gauss linearUpwind default;
 }
 
 laplacianSchemes
 {
-    default         Gauss linear corrected;
+    default         Gauss linear limited 1;
 
     //additional for silicaEquations
-    laplacian(D,C) Gauss linear corrected;
+    //laplacian(D,C) Gauss linear corrected;
 }
 
 interpolationSchemes
@@ -49,7 +50,7 @@ interpolationSchemes
 
 snGradSchemes
 {
-    default         corrected;
+    default         limited 1;
 }
 
 

@@ -1,0 +1,32 @@
+ /*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1906                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      funkySetFieldsDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+D_Sitot      1e-9;
+D_SiO2      1e-9;
+D_Cl        2.03e-9;
+D_Na        1.33e-9;
+
+expressions
+ (
+	C_Na_membrane
+	{
+		field C_Na;
+		expression "C_Na*(mag(U.y)*mag(pos().y)/$D_SiO2 + 1)";
+        keepPatches 1;
+        valuePatches (membrane);
+        D_SiO2 1e-9;
+    }
+ );

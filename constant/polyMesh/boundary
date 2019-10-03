@@ -18,47 +18,53 @@ FoamFile
 
 7
 (
-    spacer
-    {
-        type            patch;
-        nFaces          66602;
-        startFace       3172902;
-    }
     membrane
     {
         type            patch;
-        nFaces          301168;
-        startFace       3239504;
+        nFaces          23665;
+        startFace       559045;
+    }
+    spacer
+    {
+        type            patch;
+        nFaces          12682;
+        startFace       582710;
     }
     frontside
     {
-        type            patch;
-        nFaces          2746;
-        startFace       3540672;
-    }
-    outlet
-    {
-        type            patch;
-        nFaces          1778;
-        startFace       3543418;
-    }
-    backside
-    {
-        type            patch;
-        nFaces          2692;
-        startFace       3545196;
+        type            cyclicAMI;
+        neighbourPatch  backside;
+        transform translational;
+        separationVector (0 0 -0.00806);
+        nFaces          1352;
+        startFace       595392;
     }
     inlet
     {
         type            patch;
-        nFaces          1782;
-        startFace       3547888;
+        nFaces          1373;
+        startFace       596744;
+    }
+    outlet
+    {
+        type            patch;
+        nFaces          1396;
+        startFace       598117;
     }
     top
     {
         type            patch;
-        nFaces          12724;
-        startFace       3549670;
+        nFaces          7718;
+        startFace       599513;
+    }
+    backside
+    {
+        type            cyclicAMI;
+        neighbourPatch  frontside;
+        transform translational;
+        separationVector (0 0 0.00806);
+        nFaces          1404;
+        startFace       607231;
     }
 )
 

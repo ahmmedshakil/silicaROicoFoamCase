@@ -25,11 +25,15 @@ boundaryField
     {
         type            fixedValue;
         value           uniform (0.1 0 0);
+        //type              flowRateInletVelocity;
+        //volumetricFlowRate  constant 6.24e-7; //0.00078*0.008*0.1 [m3/s]
+        //value           uniform (0 0 0);
         //type            zeroGradient;
         //type    groovyBC;
         //valueExpression "vector(vx, 0, 0)";
         //value           uniform (0.06 0 0);
         //variables       "h=0.00078;umax=0.4;vx=umax*(1-pow(2*(pos().y-h/2)/h, 2));";
+        //variables         "h=0.00078;umax=0.1;vx=(pos().y>0.0001 && pos().y<0.00068 ? 0.1 : 0);";
     }
 
     outlet
@@ -56,7 +60,7 @@ boundaryField
         //valueExpression "vector(0, -p/10000000, 0)";
         valueExpression "vector(0, vy, 0)";
         value           uniform (0 0 0);
-        variables       "osmotic_coefficient=0.4;Lp=3.9e-11;Ptm=(p-100000*p/p);C_salt=(C_Na + C_Cl + C_Sitot + C_SiO2);vtm=Lp*(Ptm-osmotic_coefficient*C_salt)*(1-X_SiO2_M_vf);vy=(time()<0.1 ? -vtm*time()/0.1 : -vtm);";
+        variables       "A=(X_SiO2_M_vf<0.05 ? 1 : X_SiO2_M_vf>0.95 ? 0 : 1-X_SiO2_M_vf);osmotic_coefficient=0.95;T=298;Lp=5.2e-10;Ptm=(p-100000*p/p);C_salt=(C_Na + C_Cl + C_Sitot + C_SiO2);vtm=Lp*(Ptm-osmotic_coefficient*C_salt*8.314*T)*A;vy=-vtm;";//vy=(time()<0.1 ? -vtm*time()/0.1 : -vtm);
     }
 
     bottom
@@ -71,15 +75,17 @@ boundaryField
     frontside
     {
         //type            slip;
-        type            fixedValue;
-        value uniform (0 0 0);
+        //type            fixedValue;
+        //value uniform (0 0 0);
+        type            cyclicAMI;
     }
 
     backside
     {
+        type            cyclicAMI;
         //type            slip;
-        type            fixedValue;
-        value uniform (0 0 0);
+        //type            fixedValue;
+        //value uniform (0 0 0);
     }
 
     spacer

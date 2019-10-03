@@ -52,14 +52,16 @@ boundaryField
 
     frontside
     {
-        type            fixedValue;
-        value           uniform 0;
+        type            cyclicAMI;
+        //type            fixedValue;
+        //value           uniform 0;
     }
 
     backside
     {
-        type            fixedValue;
-        value           uniform 0;
+        type            cyclicAMI;
+        //type            fixedValue;
+        //value           uniform 0;
     }
 
     spacer

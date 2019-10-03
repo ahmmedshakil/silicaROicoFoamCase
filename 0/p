@@ -30,11 +30,11 @@ boundaryField
 
     outlet
     {
-        //type            fixedValue;
-        //value           $finalP;
-        type            totalPressure;
-        rho             none;
-        p0              uniform $finalP;
+        type            fixedValue;
+        value           $finalP;
+        //type            totalPressure;
+        //rho             none;
+        //p0              uniform $finalP;
         //value           uniform $finalP;
         //type            groovyBC;
         //valueExpression  "time()<0.1 ? ($finalP - $initP)*time()/0.1 + $initP : $finalP";
@@ -58,12 +58,12 @@ boundaryField
 
     frontside
     {
-        type zeroGradient;
+        type cyclicAMI;//zeroGradient;
     }
 
     backside
     {
-        type zeroGradient;
+        type cyclicAMI;//zeroGradient;
     }
 
     spacer

@@ -33,7 +33,7 @@ kw              kw [0 -6 0 0 2 0 0] 1e-8; //=10**-14 * 1000**2;
 
 kf              kf [0 0 -1 0 0 0 0] 1e-6; //surface precipitation rate constant (replace with actual value)
 
-kc              kc [0 0 -1 0 0 0 0] 1e-2; //cementing rate constant
+kc              kc [0 0 -1 0 0 0 0] 1e-3; //cementing rate constant
 
 T               T [0 0 0 1 0 0 0] 298; // [K] temperature
 //C_sat           C_sat [0 -3 0 0 1 0 0] 1.942;// 1000 * 10^(-0.26 - 731/T) (ksp calculated see report) [mol/m3] 

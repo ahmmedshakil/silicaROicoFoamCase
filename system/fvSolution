@@ -21,7 +21,7 @@ solvers
     {
         solver          PBiCGStab;
         preconditioner  DIC;
-        tolerance       1e-04;
+        tolerance       1e-06;
         relTol          0;
     }
     
@@ -35,7 +35,7 @@ solvers
     {
         solver          PBiCGStab;
         preconditioner  DILU;
-        tolerance       1e-04;
+        tolerance       1e-05;
         relTol          0;
     }
 
@@ -59,7 +59,7 @@ solvers
         solver          PBiCGStab;
         preconditioner  DILU;
         tolerance       1e-5;
-        relTol          0.1;
+        relTol          0;
     }
 
     C_SiO2
@@ -67,15 +67,7 @@ solvers
         solver          PBiCGStab;
         preconditioner  DILU;
         tolerance       1e-5;
-        relTol          0.1;
-    }
-
-    C_H2O
-    {
-        solver          PBiCGStab;
-        preconditioner  DILU;
-        tolerance       1e-5;
-        relTol          0.1;
+        relTol          0;
     }
 
     C_Cl
@@ -83,7 +75,7 @@ solvers
         solver          PBiCGStab;
         preconditioner  DILU;
         tolerance       1e-5;
-        relTol          0.1;
+        relTol          0;
     }
 
     C_Na
@@ -91,7 +83,7 @@ solvers
         solver          PBiCGStab;
         preconditioner  DILU;
         tolerance       1e-5;
-        relTol          0.1;
+        relTol          0;
     }
 }
 
