@@ -50,8 +50,9 @@ boundaryField
     
     outlet
     {
-        type            fixedNormalSlip;
-        n               (-1 0 0);
+        type            zeroGradient;
+        //type            fixedNormalSlip;
+        //n               (-1 0 0);
         //type            fixedValue;
         //value           uniform (0 0 0);
     }
@@ -72,6 +73,7 @@ boundaryField
 
     spacer
     {
+        //type            zeroGradient;
         type            fixedValue;
         value           uniform (0 0 0);
     }

@@ -45,7 +45,7 @@ writeFormat     binary;
 
 writePrecision  6;
 
-writeCompression off;
+writeCompression off;//on
 
 timeFormat      general;
 
@@ -55,7 +55,7 @@ runTimeModifiable true;
 
 adjustTimeStep    yes;
 
-maxCo             10;//0.5;
+maxCo             5;//0.5;
 
 initialisationTime  0.1; // time before silica and RO physics are not operating (allow fields to initialise)
 
@@ -78,8 +78,14 @@ growthThreshold     1e-20;
 
 surfaceRoughness    1e-5;
 
-dtSurface     3600;
+dtSurfaceOn     0; // 0 to turn off surface large time scale, 1 to turn on
+dtSurface     25000;//3600;
+minVoltoArea    2e-6;
 
+functions
+{
+    #includeFunc    flowRatePatch(name=membrane)
+}
 
 //functions
 //{

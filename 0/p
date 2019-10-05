@@ -16,8 +16,9 @@ FoamFile
 
 dimensions      [0 2 -2 0 0 0 0];
 
-initP           400000;
-finalP          1700000;
+//initP           400000;
+//finalP          1700000;
+finalP          0;
 
 internalField   uniform $finalP;
 

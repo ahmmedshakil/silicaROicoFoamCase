@@ -21,14 +21,14 @@ FoamFile
     membrane
     {
         type            patch;
-        nFaces          23665;
-        startFace       559045;
+        nFaces          23662;
+        startFace       597734;
     }
     spacer
     {
         type            patch;
-        nFaces          12682;
-        startFace       582710;
+        nFaces          22113;
+        startFace       621396;
     }
     frontside
     {
@@ -36,26 +36,26 @@ FoamFile
         neighbourPatch  backside;
         transform translational;
         separationVector (0 0 -0.00806);
-        nFaces          1352;
-        startFace       595392;
+        nFaces          1386;
+        startFace       643509;
     }
     inlet
     {
         type            patch;
-        nFaces          1373;
-        startFace       596744;
+        nFaces          1350;
+        startFace       644895;
     }
     outlet
     {
         type            patch;
-        nFaces          1396;
-        startFace       598117;
+        nFaces          1353;
+        startFace       646245;
     }
     top
     {
         type            patch;
-        nFaces          7718;
-        startFace       599513;
+        nFaces          10248;
+        startFace       647598;
     }
     backside
     {
@@ -63,8 +63,8 @@ FoamFile
         neighbourPatch  frontside;
         transform translational;
         separationVector (0 0 0.00806);
-        nFaces          1404;
-        startFace       607231;
+        nFaces          1370;
+        startFace       657846;
     }
 )
 
