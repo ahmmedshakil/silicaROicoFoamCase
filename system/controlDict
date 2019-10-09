@@ -57,7 +57,7 @@ adjustTimeStep    yes;
 
 maxCo             5;//0.5;
 
-initialisationTime  0.5; // time before silica and RO physics are not operating (allow fields to initialise)
+initialisationTime  0.45; // time before silica and RO physics are not operating (allow fields to initialise)
 
 foulingTimeFactor   5e6;//100000; // time scale multiple for the movement of the mesh ie foulingTimeFactor=10 then 1 simulation second is 10 seconds.
 
@@ -79,7 +79,7 @@ growthThreshold     1e-20;
 surfaceRoughness    1e-5;
 
 dtSurfaceOn     1; // 0 to turn off surface large time scale, 1 to turn on
-dtSurface     3600;//3600;
+dtSurface     21600;//3600;
 minVoltoArea    4e-6;
 fluidFieldIterations    100;
 
