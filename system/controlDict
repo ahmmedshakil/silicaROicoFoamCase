@@ -86,6 +86,17 @@ fluidFieldIterations    100;
 functions
 {
     #includeFunc    flowRatePatch(name=membrane)
+    
+    silicaDepositMass
+    {
+        type patchExpression;
+        accumulations (
+            sum
+        );
+        patches (membrane);
+        expression "SiMassDepositFace_vf";
+        ignore_unimplemented_simpleFunctionObject::movePoints true;
+    }
 }
 
 //functions

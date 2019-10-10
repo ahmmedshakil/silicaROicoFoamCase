@@ -41,6 +41,7 @@ T               T [0 0 0 1 0 0 0] 298; // [K] temperature
 concDimensions  concDimensions [0 -3 0 0 1 0 0] 1; //give solution to C_H correct dimensions
 timeDimension   timeDimension [0 0 -1 0 0 0 0] 1;
 tempDimension   tempDimension [0 0 0 1 0 0 0] 1;
+lengthDimension lengthDimension [1 0 0 0 0 0 0] 1;
 baseWaterConc   baseWaterConc [0 -3 0 0 1 0 0] 55500; 
 
 // ************************************************************************* //

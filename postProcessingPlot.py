@@ -12,19 +12,19 @@ time = info[:, 0] / 3600
 flowRate = info[:, 1]
 flux = flowRate / membraneSegmentArea * 3600 * 1000  # [L/m2.h]
 
-#take the last value of each group of time steps (the quasi SS value)
-fwdDeltaT = [0] + [time[i+1]-time[i] for i in range(len(time)-1)]
+# take the last value of each group of time steps (the quasi SS value)
+fwdDeltaT = [0] + [time[i + 1] - time[i] for i in range(len(time) - 1)]
 time_qs = []
 flux_qs = []
 flag = True
 for t, f, d in zip(time, flux, fwdDeltaT):
-	if d>1/3600:
-		time_qs.append(t)
-		flux_qs.append(f)
-		flag = False
-	elif flag == True:
-		time_qs.append(t)
-		flux_qs.append(f)		
+    if d > 1 / 3600:
+        time_qs.append(t)
+        flux_qs.append(f)
+        flag = False
+    elif flag == True:
+        time_qs.append(t)
+        flux_qs.append(f)
 
 
 plt.scatter(time_qs, flux_qs, color="k")
