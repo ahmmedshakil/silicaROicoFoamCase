@@ -79,7 +79,7 @@ growthThreshold     1e-20;
 surfaceRoughness    1e-5;
 
 dtSurfaceOn     1; // 0 to turn off surface large time scale, 1 to turn on
-dtSurface     21600;//3600;
+dtSurface     86400;//21600;//3600;
 minVoltoArea    4e-6;
 fluidFieldIterations    100;
 
@@ -89,13 +89,16 @@ functions
     
     silicaDepositMass
     {
-        type patchExpression;
-        accumulations (
-            sum
+        type surfaceFieldValue;
+        writeControl    writeTime;
+        writeFields     false;
+        regionType  patch;
+        name        membrane;
+        operation sum;
+        fields
+        (
+            SiMassDepositFace_vf
         );
-        patches (membrane);
-        expression "SiMassDepositFace_vf";
-        ignore_unimplemented_simpleFunctionObject::movePoints true;
     }
 }
 
