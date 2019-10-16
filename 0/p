@@ -32,7 +32,7 @@ boundaryField
     outlet
     {
         type            fixedValue;
-        value           $finalP;
+        value           uniform $finalP;
         //type            totalPressure;
         //rho             none;
         //p0              uniform $finalP;
