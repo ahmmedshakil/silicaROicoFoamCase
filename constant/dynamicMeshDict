@@ -33,7 +33,11 @@ displacementLaplacianCoeffs
 }
 */
 
+solver displacementSBRStress;
 
+diffusivity quadratic inverseDistance (membrane spacer);
+
+/*
 solver displacementLaplacian;
 
 diffusivity     inverseVolume; //quadratic inversePointDistance (membrane spacer);
@@ -41,7 +45,7 @@ diffusivity     inverseVolume; //quadratic inversePointDistance (membrane spacer
                 //inverseFaceDistance
                 //inversePointDistance
                 //uniform
-
+*/
 //diffusivity uniform 2.0;//1.0;
 
 //distancePatches 1 (membrane);

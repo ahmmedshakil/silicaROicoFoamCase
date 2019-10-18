@@ -10,11 +10,11 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
-    object      k;
+    object      seedCell;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 0 -1 0 0 0 0];
+dimensions      [0 0 0 0 0 0 0];
 
 internalField   uniform 0;
 
@@ -22,43 +22,50 @@ boundaryField
 {
     inlet
     {
-        type            zeroGradient;
+        type            fixedValue;
+        value           uniform 0;
     }
 
     outlet
     {
-        type            zeroGradient;
+        type            fixedValue;
+        value           uniform 0;
     }
 
     top
     {
-        type            zeroGradient;
+        type            fixedValue;
+        value           uniform 0;
     }
 
    membrane
     {
-        type            zeroGradient;
+        type            fixedValue;
+        value           uniform 0;
     }
 
     bottom
     {
-        type        zeroGradient;
+        type            fixedValue;
+        value           uniform 0;
     }
 
     frontside
     {
-        type cyclicAMI;//zeroGradient;
+        type            cyclicAMI;
     }
 
     backside
     {
-        type cyclicAMI;//zeroGradient;
+        type            cyclicAMI;
     }
 
     spacer
     {
-        type zeroGradient;
+        type            fixedValue;
+        value           uniform 0;
     }
+
 }
 
 // ************************************************************************* //

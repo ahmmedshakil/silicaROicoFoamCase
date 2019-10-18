@@ -2,14 +2,16 @@
 cd ${0%/*} || exit 1                        # Run from this directory
 . $WM_PROJECT_DIR/bin/tools/RunFunctions    # Tutorial run functions
 
-runApplication blockMesh
+# runApplication blockMesh
 
-runApplication makeFaMesh
+# runApplication makeFaMesh
 
-runApplication decomposePar
+# runApplication decomposePar
 
-runParallel silicaROicoFoam
+# runParallel silicaROicoFoam
 
-runApplication reconstructPar
+# runApplication reconstructPar
+
+runApplication silicaROicoFoam
 
 #------------------------------------------------------------------------------

@@ -31,7 +31,7 @@ startTime       0;
 
 stopAt          endTime;//endTime;
 
-endTime         6048000;
+endTime         31536000;
 
 deltaT          1e-6;
 
@@ -79,7 +79,7 @@ growthThreshold     1e-20;
 surfaceRoughness    1e-5;
 
 dtSurfaceOn     1; // 0 to turn off surface large time scale, 1 to turn on
-dtSurface     86400;//21600;//3600;
+dtSurface     432000;//21600;//3600;
 minVoltoArea    4e-6;
 fluidFieldIterations    100;
 
@@ -100,6 +100,15 @@ functions
             SiMassDepositFace_vf
         );
     }
+
+    pressureDifferencePatch // to run comment out other functions and run: postProcess -fields "(p)" >> pressureData
+    {
+        patch1 inlet;
+        patch2 outlet;
+
+        #includeEtc "caseDicts/postProcessing/pressure/pressureDifferencePatch.cfg"
+    }
+
 }
 
 //functions

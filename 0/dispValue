@@ -9,55 +9,44 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volScalarField;
-    object      k;
+    class       areaScalarField;
+    object      dispValue;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 0 -1 0 0 0 0];
+dimensions      [0 1 0 0 0 0 0];
 
-internalField   uniform 0;
+initConc        0;
+internalField   uniform $initConc;
+
+//referenceLevel  0;
 
 boundaryField
 {
     inlet
     {
-        type            zeroGradient;
+        type            fixedValue;
+        value           uniform 0;
     }
-
     outlet
     {
-        type            zeroGradient;
+        type            fixedValue;
+        value           uniform 0;
     }
-
-    top
-    {
-        type            zeroGradient;
-    }
-
-   membrane
-    {
-        type            zeroGradient;
-    }
-
-    bottom
-    {
-        type        zeroGradient;
-    }
-
     frontside
     {
-        type cyclicAMI;//zeroGradient;
+        type            fixedValue;
+        value           uniform 0;
     }
-
     backside
     {
-        type cyclicAMI;//zeroGradient;
+        type            fixedValue;
+        value           uniform 0;
     }
-
     spacer
     {
-        type zeroGradient;
+        type            fixedValue;
+        value           uniform 0;
     }
 }
 

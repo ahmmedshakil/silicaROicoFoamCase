@@ -60,11 +60,6 @@ boundaryField
     {
         type zeroGradient;
     }
-
-    //frontAndBackPlanes
-    //{
-    //    type            empty;
-    //}
 }
 
 // ************************************************************************* //
