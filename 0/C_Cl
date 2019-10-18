@@ -16,7 +16,7 @@ FoamFile
 
 dimensions      [0 -3 0 0 1 0 0];
 
-initConc        80;//99.95;
+initConc        99.85;//99.95;
 internalField   uniform $initConc;
 
 boundaryField
