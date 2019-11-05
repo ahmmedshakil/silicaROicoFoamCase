@@ -47,12 +47,12 @@ boundaryField
 
     frontside
     {
-        type zeroGradient;
+        type cyclicAMI;//zeroGradient;
     }
 
     backside
     {
-        type zeroGradient;
+        type cyclicAMI;//zeroGradient;
     }
 
     spacer

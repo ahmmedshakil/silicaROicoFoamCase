@@ -25,19 +25,19 @@ libs
 
 application     silicaROicoFoam;
 
-startFrom       startTime; //latestTime;//startTime;
+startFrom       latestTime; //latestTime;//startTime;
 
 startTime       0;
 
 stopAt          endTime;//endTime;
 
-endTime         6048000;
+endTime         31536000;
 
-deltaT          1e-4;
+deltaT          1e-6;
 
 writeControl    timeStep;
 
-writeInterval   1;
+writeInterval   25;
 
 purgeWrite      0;
 
@@ -45,7 +45,7 @@ writeFormat     binary;
 
 writePrecision  6;
 
-writeCompression off;
+writeCompression off;//on
 
 timeFormat      general;
 
@@ -55,9 +55,9 @@ runTimeModifiable true;
 
 adjustTimeStep    yes;
 
-maxCo             0.5;//0.5;
+maxCo             5;//0.5;
 
-initialisationTime  0.1; // time before silica and RO physics are not operating (allow fields to initialise)
+initialisationTime  0.45; // time before silica and RO physics are not operating (allow fields to initialise)
 
 foulingTimeFactor   5e6;//100000; // time scale multiple for the movement of the mesh ie foulingTimeFactor=10 then 1 simulation second is 10 seconds.
 
@@ -67,17 +67,49 @@ seedProbabilityFactor   5; // 1 in seedProbabilityFactor chance of growth in fir
 
 curvatureFactor     0.9; // value y component of point normal vector must be greater than for seed to already exist
 
-seedType    1; //0=roughness, 1=crystal
+seedType    2; //0=roughness, 1=crystal, 2=runtime seeding
 seedXmin    0.00072;
 seedXmax    0.00078;
 seedZmin    0.00047;
 seedZmax    0.00052;
-seedY       1e-6;//1e-8;
+seedY       1e-9;//1e-6;
 
 growthThreshold     1e-20;
 
 surfaceRoughness    1e-5;
 
+dtSurfaceOn     1; // 0 to turn off surface large time scale, 1 to turn on
+dtSurface     432000;//21600;//3600;
+minVoltoArea    4e-6;
+fluidFieldIterations    100;
+
+functions
+{
+    #includeFunc    flowRatePatch(name=membrane)
+    
+    silicaDepositMass
+    {
+        type surfaceFieldValue;
+        writeControl    writeTime;
+        writeFields     false;
+        regionType  patch;
+        name        membrane;
+        operation sum;
+        fields
+        (
+            SiMassDepositFace_vf
+        );
+    }
+
+    pressureDifferencePatch // to run comment out other functions and run: postProcess -fields "(p)" >> pressureData
+    {
+        patch1 inlet;
+        patch2 outlet;
+
+        #includeEtc "caseDicts/postProcessing/pressure/pressureDifferencePatch.cfg"
+    }
+
+}
 
 //functions
 //{

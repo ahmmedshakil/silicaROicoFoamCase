@@ -16,7 +16,7 @@ FoamFile
 
 dimensions      [0 -3 0 0 1 0 0];
 
-initConc        0.01;
+initConc        0.00001;
 internalField   uniform $initConc;
 
 boundaryField
@@ -24,7 +24,7 @@ boundaryField
     inlet
     {
         type            fixedValue;
-        value           uniform 0.01;
+        value           uniform $initConc;
     }
 
     outlet
@@ -53,12 +53,12 @@ boundaryField
 
     frontside
     {
-        type zeroGradient;
+        type cyclicAMI;//zeroGradient;
     }
 
     backside
     {
-        type zeroGradient;
+        type cyclicAMI;//zeroGradient;
     }
 
     spacer

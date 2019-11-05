@@ -16,10 +16,11 @@ FoamFile
 
 dimensions      [0 2 -2 0 0 0 0];
 
-initP           400000;
-finalP          1700000;
+//initP           400000;
+//finalP          1700000;
+finalP          0;
 
-internalField   uniform $finalP * 1.1;
+internalField   uniform $finalP;
 
 boundaryField
 {
@@ -31,7 +32,7 @@ boundaryField
     outlet
     {
         type            fixedValue;
-        value           $finalP;
+        value           uniform $finalP;
         //type            totalPressure;
         //rho             none;
         //p0              uniform $finalP;
@@ -58,12 +59,12 @@ boundaryField
 
     frontside
     {
-        type zeroGradient;
+        type cyclicAMI;//zeroGradient;
     }
 
     backside
     {
-        type zeroGradient;
+        type cyclicAMI;//zeroGradient;
     }
 
     spacer

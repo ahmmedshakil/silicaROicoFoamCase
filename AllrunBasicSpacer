@@ -1,0 +1,17 @@
+#!/bin/sh
+cd ${0%/*} || exit 1                        # Run from this directory
+. $WM_PROJECT_DIR/bin/tools/RunFunctions    # Tutorial run functions
+
+runApplication ideasUnvToFoam basicSpacer.unv
+
+runApplication transformPoints -scale '(0.001 0.001 0.001)' # convert mesh units from mm to m
+
+runApplication makeFaMesh
+
+# runApplication decomposePar
+
+runApplication silicaROicoFoam
+
+runApplication reconstructPar
+
+#------------------------------------------------------------------------------

@@ -16,8 +16,11 @@ FoamFile
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+//https://openfoamwiki.net/index.php/Parameter_Definitions_-_dynamicMotionSolverFvMesh
+
 dynamicFvMesh   dynamicMotionSolverFvMesh;
-twoDMotion      no; //set to 'yes' when 2D case
+
+//twoDMotion      no; //set to 'yes' when 2D case
 
 motionSolverLibs ( "libfvMotionSolvers.so" );
 
@@ -30,21 +33,31 @@ displacementLaplacianCoeffs
 }
 */
 
+solver displacementSBRStress;
 
+diffusivity quadratic inverseDistance (membrane spacer);
+
+/*
 solver displacementLaplacian;
 
-diffusivity uniform 1.0;
+diffusivity     inverseVolume; //quadratic inversePointDistance (membrane spacer);
+                //inverseDistance
+                //inverseFaceDistance
+                //inversePointDistance
+                //uniform
+*/
+//diffusivity uniform 2.0;//1.0;
 
-distancePatches 1 (membrane);
+//distancePatches 1 (membrane);
 
-frozenDiffusion yes;
+//frozenDiffusion yes;
 
-pseudoSolid
-{
-    poissonsRatio           0.5;
-    nCorrectors             3;
-    convergenceTolerance    1e-9;
-};
+//pseudoSolid
+//{
+//    poissonsRatio           0.5;
+//    nCorrectors             3;
+//    convergenceTolerance    1e-9;
+//};
 
 
 // ************************************************************************* //
